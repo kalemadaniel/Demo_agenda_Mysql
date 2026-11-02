@@ -1,0 +1,22 @@
+Vérifications réalisées le 2 novembre 2026
+
+- Compilation de tous les fichiers Java avec le JDK 8 : réussie.
+- Construction du JAR avec point d'entrée kalema.collection.Agenda : réussie.
+- Ajout, lecture, modification et suppression : réussis sur HSQLDB en mémoire.
+- Conservation des accents et apostrophes : réussie.
+- Filtrage par intervalle de dates : réussi.
+- Refus des horaires de fin égaux au début : réussi.
+- Signalement d'une suppression concernant un identifiant absent : réussi.
+- Affichage Swing avec des rendez-vous de test : vérifié visuellement.
+- Affichage compact sans base disponible : vérifié visuellement.
+- Désactivation de l'ajout et message explicite en absence de connexion : vérifiés.
+- Aucun ancien nom de package dans les sources : vérifié.
+
+Limites : le schéma SQL et le connecteur n'ont pas été exécutés contre un serveur
+MySQL réel dans cette session. Le test HSQLDB valide les opérations JDBC utilisées,
+mais ne valide ni la version de votre serveur MySQL, ni son authentification.
+Les rendez-vous de l'aperçu sont des exemples de test ; ils ne sont pas fournis
+dans la base et ne représentent pas une récupération des données perdues.
+
+Révision visuelle : palette Nimbus native et boutons Nimbus conservés ; mentions
+Kalema Collection retirées de l'interface. Compilation et rendu revérifiés.

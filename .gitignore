@@ -1,0 +1,5 @@
+database.properties
+build/
+build-modern/
+dist/
+nbproject/private/

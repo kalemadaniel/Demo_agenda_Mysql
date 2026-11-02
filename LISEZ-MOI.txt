@@ -1,0 +1,53 @@
+AGENDA — JAVA SWING NIMBUS
+=========================
+
+1. INSTALLER
+Décompressez ce dossier, par exemple dans D:\projets\agenda-modernise.
+Conservez votre ancien projet avant de le remplacer.
+Java 8 ou supérieur est nécessaire. Le projet reste compatible avec NetBeans/Ant.
+Double-cliquez sur Lancer.cmd pour ouvrir l'application déjà compilée.
+Pour reconstruire : powershell -ExecutionPolicy Bypass -File .\Construire.ps1
+Dans NetBeans, ouvrez ce dossier et choisissez kalema.collection.Agenda comme classe principale.
+
+2. RECRÉER LA BASE MYSQL
+Exécutez database\schema.sql dans votre outil MySQL (Workbench, phpMyAdmin, etc.).
+Le script crée java_calendar, appointment et la vue de compatibilité v_calendrier.
+Il ne contient ni DROP TABLE ni suppression de rendez-vous existants.
+Il reconstruit la structure déduite du code, PAS les données anciennes : celles-ci
+nécessitent une sauvegarde ou une récupération du serveur d'origine.
+Il ne migre pas une table existante ayant une structure différente.
+
+Copiez database.properties.example vers database.properties à la racine du projet.
+Renseignez l'adresse du serveur, l'utilisateur et le mot de passe.
+Lancez via Lancer.cmd pour que ce fichier soit trouvé dans le bon dossier.
+Vous pouvez aussi définir AGENDA_DB_URL, AGENDA_DB_USER, AGENDA_DB_PASSWORD.
+L'option Java -Dagenda.config=C:/chemin/database.properties accepte un autre emplacement.
+Les paramètres sont relus à chaque connexion ; cliquez sur Actualiser après modification.
+
+Le connecteur MySQL 5.1.23 fourni provient du projet d'origine.
+La connexion sur votre serveur MySQL réel reste à valider (version, compte et accès).
+Si le serveur requiert un connecteur différent, remplacez le JAR dans lib et
+adaptez son nom dans Construire.ps1 et nbproject/project.properties.
+N'incluez pas votre fichier database.properties contenant le mot de passe dans un partage.
+
+3. UTILISER
+Les semaines commencent le lundi. Aujourd'hui ramène à la date courante.
+Cliquez sur un numéro de jour pour consulter ses rendez-vous.
+Nouveau rendez-vous : titre, date, début, fin, lieu et notes.
+Modifier et Supprimer sont accessibles dans le panneau de droite.
+La fin doit être après le début, au cours de la même journée.
+La recherche filtre le titre, le lieu et les notes dans le mois affiché.
+Ctrl+N ouvre un rendez-vous ; F5 actualise la connexion et les données.
+Les données ne sont enregistrées que dans MySQL. Aucun mode hors connexion
+ne prétend enregistrer des rendez-vous lorsque la base est inaccessible.
+Une connexion indisponible est signalée en bas de la fenêtre.
+
+4. ORGANISATION DU CODE
+kalema.collection.Agenda : point d'entrée Swing exécuté sur le thread graphique.
+kalema.collection.presentation.AgendaFrame : nouvelle interface française.
+kalema.collection.datastorage.AgendaRepository : requêtes préparées et CRUD MySQL.
+Les anciens panneaux et modèles sont conservés sous kalema.collection.
+Les fichiers *_1.java ont été retirés de la copie : ils déclaraient les mêmes
+classes que les fichiers principaux et certains dépendaient de Classes.clsGlosaire absent.
+L'ancien code garde ses mentions d'auteur. Aucun fichier du projet original
+n'a été modifié lors de la préparation de cette version.
