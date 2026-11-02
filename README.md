@@ -2,6 +2,9 @@
 
 Application de gestion de rendez-vous développée en **Java Swing**, avec le thème **Nimbus** et une base de données **MySQL**.
 
+<img width="1263" height="812" alt="Capture d&#39;écran 2026-11-02 095011" src="https://github.com/user-attachments/assets/7fab1413-9312-47a9-bd2d-b4e38596522b" />
+
+
 ## ✨ Fonctionnalités
 
 - Calendrier mensuel avec des semaines commençant le lundi.
